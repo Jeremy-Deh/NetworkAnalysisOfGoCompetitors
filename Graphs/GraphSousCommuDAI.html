@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 2000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Fran\u00e7ois M.", "label": "Fran\u00e7ois M.", "shape": "dot", "size": 5}, {"id": "Junfu D.", "label": "Junfu D.", "shape": "dot", "size": 3}, {"id": "Arnaud K.", "label": "Arnaud K.", "shape": "dot", "size": 5}, {"id": "Lionel F.", "label": "Lionel F.", "shape": "dot", "size": 4}, {"id": "L\u00e9o B.", "label": "L\u00e9o B.", "shape": "dot", "size": 3}, {"id": "Fran\u00e7ois B.", "label": "Fran\u00e7ois B.", "shape": "dot", "size": 3}, {"id": "Jean-Pierre L.", "label": "Jean-Pierre L.", "shape": "dot", "size": 3}, {"id": "Jeremy D.", "label": "Jeremy D.", "shape": "dot", "size": 2}]);
+        edges = new vis.DataSet([{"from": "Fran\u00e7ois M.", "label": 1, "to": "Junfu D.", "value": 14, "weight": 1}, {"from": "Fran\u00e7ois M.", "label": 1, "to": "Arnaud K.", "value": 6, "weight": 1}, {"from": "Fran\u00e7ois M.", "label": 1, "to": "Lionel F.", "value": 18, "weight": 1}, {"from": "Fran\u00e7ois M.", "label": 1, "to": "L\u00e9o B.", "value": 2, "weight": 1}, {"from": "Fran\u00e7ois M.", "label": 1, "to": "Fran\u00e7ois B.", "value": 8, "weight": 1}, {"from": "Junfu D.", "label": 1, "to": "Lionel F.", "value": 4, "weight": 1}, {"from": "Junfu D.", "label": 1, "to": "Arnaud K.", "value": 2, "weight": 1}, {"from": "Lionel F.", "label": 1, "to": "Arnaud K.", "value": 32, "weight": 1}, {"from": "Lionel F.", "label": 1, "to": "Jean-Pierre L.", "value": 2, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Jean-Pierre L.", "value": 10, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Fran\u00e7ois B.", "value": 4, "weight": 1}, {"from": "Jean-Pierre L.", "label": 1, "to": "Jeremy D.", "value": 4, "weight": 1}, {"from": "Fran\u00e7ois B.", "label": 1, "to": "L\u00e9o B.", "value": 2, "weight": 1}, {"from": "L\u00e9o B.", "label": 1, "to": "Jeremy D.", "value": 2, "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

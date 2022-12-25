@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 2000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"group": 0, "id": "Aldo M.", "label": "Aldo M.", "shape": "dot", "size": 6}, {"group": 0, "id": "Sofiane R.", "label": "Sofiane R.", "shape": "dot", "size": 6}, {"group": 0, "id": "Hassane B.", "label": "Hassane B.", "shape": "dot", "size": 6}, {"group": 0, "id": "Fabien V.", "label": "Fabien V.", "shape": "dot", "size": 12}, {"group": 0, "id": "Arnaud K.", "label": "Arnaud K.", "shape": "dot", "size": 11}, {"group": 0, "id": "Eric L.", "label": "Eric L.", "shape": "dot", "size": 4}, {"group": 0, "id": "Antonin C.", "label": "Antonin C.", "shape": "dot", "size": 14}, {"group": 0, "id": "Jean-Fran\u00e7ois P.", "label": "Jean-Fran\u00e7ois P.", "shape": "dot", "size": 5}, {"group": 2, "id": "Patrice B.", "label": "Patrice B.", "shape": "dot", "size": 15}, {"group": 2, "id": "Houari G.", "label": "Houari G.", "shape": "dot", "size": 4}, {"group": 2, "id": "Isaac S.", "label": "Isaac S.", "shape": "dot", "size": 3}, {"group": 2, "id": "Bob B.", "label": "Bob B.", "shape": "dot", "size": 7}, {"group": 2, "id": "Colin C.", "label": "Colin C.", "shape": "dot", "size": 7}, {"group": 1, "id": "Jean-Marc A.", "label": "Jean-Marc A.", "shape": "dot", "size": 9}, {"group": 1, "id": "Jean-Luc G.", "label": "Jean-Luc G.", "shape": "dot", "size": 10}, {"group": 1, "id": "David R.", "label": "David R.", "shape": "dot", "size": 8}, {"group": 1, "id": "Jean-Pierre L.", "label": "Jean-Pierre L.", "shape": "dot", "size": 10}, {"group": 2, "id": "L\u00e9o B.", "label": "L\u00e9o B.", "shape": "dot", "size": 6}, {"group": 1, "id": "Thibault S.", "label": "Thibault S.", "shape": "dot", "size": 8}, {"group": 1, "id": "Jeremy D.", "label": "Jeremy D.", "shape": "dot", "size": 11}, {"group": 1, "id": "Eric V.", "label": "Eric V.", "shape": "dot", "size": 9}, {"group": 1, "id": "G\u00e9rard P.", "label": "G\u00e9rard P.", "shape": "dot", "size": 7}, {"group": 2, "id": "Maxime E.", "label": "Maxime E.", "shape": "dot", "size": 8}, {"group": 1, "id": "Bruno H.", "label": "Bruno H.", "shape": "dot", "size": 2}, {"group": 1, "id": "Corentin J.", "label": "Corentin J.", "shape": "dot", "size": 3}, {"group": 2, "id": "Pierre P.", "label": "Pierre P.", "shape": "dot", "size": 3}, {"group": 2, "id": "Hugo J.", "label": "Hugo J.", "shape": "dot", "size": 3}, {"group": 2, "id": "Sylvain R.", "label": "Sylvain R.", "shape": "dot", "size": 7}, {"group": 2, "id": "Nigel C.", "label": "Nigel C.", "shape": "dot", "size": 4}, {"group": 2, "id": "Thomas C.", "label": "Thomas C.", "shape": "dot", "size": 9}, {"group": 2, "id": "Denis L.", "label": "Denis L.", "shape": "dot", "size": 3}, {"group": 2, "id": "Marie-Fran\u00e7oise C.", "label": "Marie-Fran\u00e7oise C.", "shape": "dot", "size": 6}, {"group": 2, "id": "Herv\u00e9 D.", "label": "Herv\u00e9 D.", "shape": "dot", "size": 3}, {"group": 2, "id": "Sylvain C.", "label": "Sylvain C.", "shape": "dot", "size": 3}, {"group": 2, "id": "Guy B.", "label": "Guy B.", "shape": "dot", "size": 8}, {"group": 3, "id": "Thomas B.", "label": "Thomas B.", "shape": "dot", "size": 3}, {"group": 1, "id": "Kylian D.", "label": "Kylian D.", "shape": "dot", "size": 2}, {"group": 3, "id": "V\u00e9ronique B.", "label": "V\u00e9ronique B.", "shape": "dot", "size": 6}, {"group": 2, "id": "Robert M.", "label": "Robert M.", "shape": "dot", "size": 3}, {"group": 3, "id": "Etienne B.", "label": "Etienne B.", "shape": "dot", "size": 4}, {"group": 2, "id": "Lo\u00efc L.", "label": "Lo\u00efc L.", "shape": "dot", "size": 1}, {"group": 1, "id": "Cl\u00e9ment J.", "label": "Cl\u00e9ment J.", "shape": "dot", "size": 1}, {"group": 3, "id": "Erwan L.", "label": "Erwan L.", "shape": "dot", "size": 3}, {"group": 3, "id": "Alain M.", "label": "Alain M.", "shape": "dot", "size": 1}, {"group": 3, "id": "Cl\u00e9mentine H.", "label": "Cl\u00e9mentine H.", "shape": "dot", "size": 2}]);
+        edges = new vis.DataSet([{"from": "Aldo M.", "label": 1, "to": "Sofiane R.", "value": 8, "weight": 1}, {"from": "Aldo M.", "label": 1, "to": "Hassane B.", "value": 6, "weight": 1}, {"from": "Aldo M.", "label": 1, "to": "Fabien V.", "value": 2, "weight": 1}, {"from": "Aldo M.", "label": 1, "to": "Arnaud K.", "value": 4, "weight": 1}, {"from": "Aldo M.", "label": 1, "to": "Eric L.", "value": 2, "weight": 1}, {"from": "Aldo M.", "label": 1, "to": "Antonin C.", "value": 4, "weight": 1}, {"from": "Sofiane R.", "label": 1, "to": "Arnaud K.", "value": 14, "weight": 1}, {"from": "Sofiane R.", "label": 1, "to": "Fabien V.", "value": 6, "weight": 1}, {"from": "Sofiane R.", "label": 1, "to": "Antonin C.", "value": 6, "weight": 1}, {"from": "Sofiane R.", "label": 1, "to": "Hassane B.", "value": 20, "weight": 1}, {"from": "Sofiane R.", "label": 1, "to": "Jean-Fran\u00e7ois P.", "value": 4, "weight": 1}, {"from": "Hassane B.", "label": 1, "to": "Arnaud K.", "value": 12, "weight": 1}, {"from": "Hassane B.", "label": 1, "to": "Fabien V.", "value": 6, "weight": 1}, {"from": "Hassane B.", "label": 1, "to": "Antonin C.", "value": 6, "weight": 1}, {"from": "Hassane B.", "label": 1, "to": "Eric L.", "value": 4, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Arnaud K.", "value": 6, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Patrice B.", "value": 4, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Houari G.", "value": 2, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Isaac S.", "value": 4, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Bob B.", "value": 2, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Jean-Fran\u00e7ois P.", "value": 4, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Colin C.", "value": 6, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Antonin C.", "value": 8, "weight": 1}, {"from": "Fabien V.", "label": 1, "to": "Eric L.", "value": 4, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Jean-Marc A.", "value": 4, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Jean-Luc G.", "value": 4, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "David R.", "value": 4, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Jean-Pierre L.", "value": 6, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Antonin C.", "value": 6, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Jean-Fran\u00e7ois P.", "value": 2, "weight": 1}, {"from": "Arnaud K.", "label": 1, "to": "Colin C.", "value": 2, "weight": 1}, {"from": "Eric L.", "label": 1, "to": "L\u00e9o B.", "value": 2, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "Jean-Fran\u00e7ois P.", "value": 4, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "Jean-Marc A.", "value": 6, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "Jean-Luc G.", "value": 4, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "Jean-Pierre L.", "value": 4, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "David R.", "value": 6, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "Thibault S.", "value": 2, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "Jeremy D.", "value": 2, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "Eric V.", "value": 2, "weight": 1}, {"from": "Antonin C.", "label": 1, "to": "G\u00e9rard P.", "value": 2, "weight": 1}, {"from": "Jean-Marc A.", "label": 1, "to": "Jean-Luc G.", "value": 4, "weight": 1}, {"from": "Jean-Marc A.", "label": 1, "to": "Jean-Pierre L.", "value": 6, "weight": 1}, {"from": "Jean-Marc A.", "label": 1, "to": "David R.", "value": 2, "weight": 1}, {"from": "Jean-Marc A.", "label": 1, "to": "Eric V.", "value": 4, "weight": 1}, {"from": "Jean-Marc A.", "label": 1, "to": "Thibault S.", "value": 4, "weight": 1}, {"from": "Jean-Marc A.", "label": 1, "to": "G\u00e9rard P.", "value": 4, "weight": 1}, {"from": "Jean-Marc A.", "label": 1, "to": "Jeremy D.", "value": 4, "weight": 1}, {"from": "Jean-Luc G.", "label": 1, "to": "Jeremy D.", "value": 2, "weight": 1}, {"from": "Jean-Luc G.", "label": 1, "to": "Jean-Pierre L.", "value": 12, "weight": 1}, {"from": "Jean-Luc G.", "label": 1, "to": "Maxime E.", "value": 2, "weight": 1}, {"from": "Jean-Luc G.", "label": 1, "to": "David R.", "value": 4, "weight": 1}, {"from": "Jean-Luc G.", "label": 1, "to": "Eric V.", "value": 2, "weight": 1}, {"from": "Jean-Luc G.", "label": 1, "to": "Thibault S.", "value": 2, "weight": 1}, {"from": "Jean-Luc G.", "label": 1, "to": "G\u00e9rard P.", "value": 2, "weight": 1}, {"from": "David R.", "label": 1, "to": "Jean-Pierre L.", "value": 8, "weight": 1}, {"from": "David R.", "label": 1, "to": "Bruno H.", "value": 2, "weight": 1}, {"from": "David R.", "label": 1, "to": "Eric V.", "value": 2, "weight": 1}, {"from": "David R.", "label": 1, "to": "Corentin J.", "value": 2, "weight": 1}, {"from": "Jean-Pierre L.", "label": 1, "to": "Jean-Fran\u00e7ois P.", "value": 2, "weight": 1}, {"from": "Jean-Pierre L.", "label": 1, "to": "Thibault S.", "value": 4, "weight": 1}, {"from": "Jean-Pierre L.", "label": 1, "to": "Jeremy D.", "value": 4, "weight": 1}, {"from": "Jean-Pierre L.", "label": 1, "to": "Eric V.", "value": 8, "weight": 1}, {"from": "Jean-Pierre L.", "label": 1, "to": "G\u00e9rard P.", "value": 4, "weight": 1}, {"from": "Colin C.", "label": 1, "to": "Pierre P.", "value": 2, "weight": 1}, {"from": "Colin C.", "label": 1, "to": "Patrice B.", "value": 2, "weight": 1}, {"from": "Colin C.", "label": 1, "to": "Hugo J.", "value": 2, "weight": 1}, {"from": "Colin C.", "label": 1, "to": "Sylvain R.", "value": 2, "weight": 1}, {"from": "Colin C.", "label": 1, "to": "Nigel C.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Houari G.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Bob B.", "value": 8, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Isaac S.", "value": 6, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "L\u00e9o B.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Sylvain R.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Thomas C.", "value": 6, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Denis L.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Marie-Fran\u00e7oise C.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Herv\u00e9 D.", "value": 6, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Maxime E.", "value": 6, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Sylvain C.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Guy B.", "value": 2, "weight": 1}, {"from": "Patrice B.", "label": 1, "to": "Thomas B.", "value": 2, "weight": 1}, {"from": "Houari G.", "label": 1, "to": "Isaac S.", "value": 2, "weight": 1}, {"from": "Houari G.", "label": 1, "to": "Thomas C.", "value": 2, "weight": 1}, {"from": "Bob B.", "label": 1, "to": "Pierre P.", "value": 4, "weight": 1}, {"from": "Bob B.", "label": 1, "to": "L\u00e9o B.", "value": 2, "weight": 1}, {"from": "Bob B.", "label": 1, "to": "Maxime E.", "value": 4, "weight": 1}, {"from": "Bob B.", "label": 1, "to": "Sylvain R.", "value": 4, "weight": 1}, {"from": "Bob B.", "label": 1, "to": "Thomas C.", "value": 2, "weight": 1}, {"from": "Thibault S.", "label": 1, "to": "Kylian D.", "value": 2, "weight": 1}, {"from": "Thibault S.", "label": 1, "to": "Eric V.", "value": 4, "weight": 1}, {"from": "Thibault S.", "label": 1, "to": "G\u00e9rard P.", "value": 4, "weight": 1}, {"from": "Thibault S.", "label": 1, "to": "Jeremy D.", "value": 4, "weight": 1}, {"from": "Jeremy D.", "label": 1, "to": "L\u00e9o B.", "value": 2, "weight": 1}, {"from": "Jeremy D.", "label": 1, "to": "Guy B.", "value": 2, "weight": 1}, {"from": "Jeremy D.", "label": 1, "to": "G\u00e9rard P.", "value": 4, "weight": 1}, {"from": "Jeremy D.", "label": 1, "to": "Eric V.", "value": 4, "weight": 1}, {"from": "Jeremy D.", "label": 1, "to": "V\u00e9ronique B.", "value": 2, "weight": 1}, {"from": "Jeremy D.", "label": 1, "to": "Nigel C.", "value": 2, "weight": 1}, {"from": "Eric V.", "label": 1, "to": "Bruno H.", "value": 2, "weight": 1}, {"from": "Eric V.", "label": 1, "to": "G\u00e9rard P.", "value": 4, "weight": 1}, {"from": "Thomas C.", "label": 1, "to": "Guy B.", "value": 2, "weight": 1}, {"from": "Thomas C.", "label": 1, "to": "Sylvain C.", "value": 2, "weight": 1}, {"from": "Thomas C.", "label": 1, "to": "Marie-Fran\u00e7oise C.", "value": 2, "weight": 1}, {"from": "Thomas C.", "label": 1, "to": "Robert M.", "value": 4, "weight": 1}, {"from": "Thomas C.", "label": 1, "to": "Maxime E.", "value": 8, "weight": 1}, {"from": "Thomas C.", "label": 1, "to": "Denis L.", "value": 2, "weight": 1}, {"from": "Herv\u00e9 D.", "label": 1, "to": "Pierre P.", "value": 4, "weight": 1}, {"from": "Herv\u00e9 D.", "label": 1, "to": "Sylvain R.", "value": 2, "weight": 1}, {"from": "L\u00e9o B.", "label": 1, "to": "Hugo J.", "value": 2, "weight": 1}, {"from": "L\u00e9o B.", "label": 1, "to": "Robert M.", "value": 2, "weight": 1}, {"from": "Maxime E.", "label": 1, "to": "Marie-Fran\u00e7oise C.", "value": 6, "weight": 1}, {"from": "Maxime E.", "label": 1, "to": "Denis L.", "value": 2, "weight": 1}, {"from": "Maxime E.", "label": 1, "to": "Guy B.", "value": 2, "weight": 1}, {"from": "Maxime E.", "label": 1, "to": "Sylvain C.", "value": 4, "weight": 1}, {"from": "Sylvain R.", "label": 1, "to": "Nigel C.", "value": 2, "weight": 1}, {"from": "Sylvain R.", "label": 1, "to": "Guy B.", "value": 4, "weight": 1}, {"from": "Sylvain R.", "label": 1, "to": "Marie-Fran\u00e7oise C.", "value": 2, "weight": 1}, {"from": "Hugo J.", "label": 1, "to": "Guy B.", "value": 2, "weight": 1}, {"from": "Nigel C.", "label": 1, "to": "Guy B.", "value": 2, "weight": 1}, {"from": "Guy B.", "label": 1, "to": "Etienne B.", "value": 2, "weight": 1}, {"from": "Robert M.", "label": 1, "to": "Marie-Fran\u00e7oise C.", "value": 4, "weight": 1}, {"from": "Marie-Fran\u00e7oise C.", "label": 1, "to": "Lo\u00efc L.", "value": 2, "weight": 1}, {"from": "Thomas B.", "label": 1, "to": "Etienne B.", "value": 2, "weight": 1}, {"from": "Thomas B.", "label": 1, "to": "V\u00e9ronique B.", "value": 2, "weight": 1}, {"from": "Corentin J.", "label": 1, "to": "Kylian D.", "value": 2, "weight": 1}, {"from": "Corentin J.", "label": 1, "to": "Cl\u00e9ment J.", "value": 2, "weight": 1}, {"from": "Etienne B.", "label": 1, "to": "V\u00e9ronique B.", "value": 2, "weight": 1}, {"from": "Etienne B.", "label": 1, "to": "Erwan L.", "value": 2, "weight": 1}, {"from": "V\u00e9ronique B.", "label": 1, "to": "Alain M.", "value": 2, "weight": 1}, {"from": "V\u00e9ronique B.", "label": 1, "to": "Erwan L.", "value": 2, "weight": 1}, {"from": "V\u00e9ronique B.", "label": 1, "to": "Cl\u00e9mentine H.", "value": 2, "weight": 1}, {"from": "Erwan L.", "label": 1, "to": "Cl\u00e9mentine H.", "value": 2, "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
