@@ -1,4 +1,5 @@
-Vetrsion Française : [PDF]([https://link-url-here.org)](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/FR_LeReseauDeGoEnFrance.pdf) 
+Version Française : [PDF]([https://link-url-here.org)](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/FR_LeReseauDeGoEnFrance.pdf) 
+
 Version anglaise : [PDF]([https://link-url-here.org)](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/EN_TheSocialNetworkOfFrenchGoPlayers.pdf)  
 
 # Network Analysis Of Go Competitors
