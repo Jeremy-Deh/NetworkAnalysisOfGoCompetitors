@@ -1,6 +1,6 @@
-Version Française : [PDF]([https://link-url-here.org)](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/FR_LeReseauDeGoEnFrance.pdf) 
+Version Française : [pdf]([https://link-url-here.org)](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/FR_LeReseauDeGoEnFrance.pdf) 
 
-Version anglaise : [PDF]([https://link-url-here.org)](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/EN_TheSocialNetworkOfFrenchGoPlayers.pdf)  
+Version anglaise : [pdf]([https://link-url-here.org)](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/EN_TheSocialNetworkOfFrenchGoPlayers.pdf)  
 
 # Network Analysis Of Go Competitors
 Analysis of the social network of french go (baduk, weiqi)
