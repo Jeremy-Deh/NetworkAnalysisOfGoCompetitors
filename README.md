@@ -7,5 +7,5 @@ Version anglaise : [PDF](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompet
 Analysis of the social network of french go (baduk, weiqi)
 
 Files :
-- Article with the result of the analysis [TheSocialNetworkOfFrenchGoPlayers.pdf](https://github.com/Jeremy-Deh/NetworkAnalysisOfGoCompetitors/blob/main/TheSocialNetworkOfFrenchGoPlayers.pdf)
+- Article with the result of the analysis
 - Network graphs in html format
